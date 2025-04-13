@@ -33,7 +33,7 @@ function toProfileUrl(profileId: string, postId: string) {
     title="Daily Top Posts"
     description="Top 5 Posts with the most positive change in the last day."
     icon="i-heroicons-globe-alt-20-solid"
-  >
+  > 
     <div class="space-y-2">
       <NuxtLink
         v-for="(post, index) in userPosts"
