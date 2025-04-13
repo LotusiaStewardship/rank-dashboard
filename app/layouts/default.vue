@@ -5,23 +5,24 @@ const { isHelpSlideoverOpen } = useDashboard()
 
 const links = [{
   id: 'home',
-  label: 'User Rankings',
-  icon: 'i-heroicons-home',
+  label: ' Daily Rankings',
+  icon: 'i-heroicons-arrow-trending-up',
   to: '/',
   tooltip: {
-    text: 'User Rankings',
+    text: 'Lowest Daily Rankings',
     shortcuts: ['G', 'H']
   }
 },  {
   id: 'users',
-  label: 'Extension Users',
+  label: 'Ranked Users',
   icon: 'i-heroicons-user-group',
-  to: '/users',
+  to: '/ranked',
   tooltip: {
     text: 'Users',
     shortcuts: ['G', 'U']
   }
-}]
+}
+]
 
 const groups = [{
   key: 'links',

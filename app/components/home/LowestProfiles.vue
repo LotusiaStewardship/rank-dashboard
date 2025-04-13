@@ -4,7 +4,7 @@ import { toMinifiedNumber } from '~~/utils/functions'
 
 const platformType = 'twitter'
 const apiUrl = `https://rank.lotusia.org/api/v1/stats/${platformType}`
-const apiReply = await fetch(`${apiUrl}/profiles/top-ranked`)
+const apiReply = await fetch(`${apiUrl}/profiles/lowest-ranked`)
 const profiles = (await apiReply.json()) as APIResponse[]
 
 function toProfileUrl(profileId: string) {
@@ -14,8 +14,8 @@ function toProfileUrl(profileId: string) {
 
 <template>
   <UDashboardCard
-    title="Daily Top Profiles"
-    description="Top 5 profiles with the most positive change in the last day."
+    title="Daily Lowest Profiles"
+    description="Top 5 profiles with the most negative change in the last day."
     icon="i-heroicons-chart-bar-20-solid"
   >
     <NuxtLink
@@ -38,7 +38,7 @@ function toProfileUrl(profileId: string) {
       </div>
 
       <p class="text-gray-900 dark:text-white font-medium text-lg">
-        {{ toMinifiedNumber(Number(profile.total.ranking)) }} (+{{
+        {{ toMinifiedNumber(Number(profile.total.ranking)) }} ({{
           toMinifiedNumber(Number(profile.changed.ranking))
         }})
       </p>

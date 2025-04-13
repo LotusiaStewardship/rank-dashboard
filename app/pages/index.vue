@@ -8,13 +8,15 @@ const { isNotificationsSlideoverOpen } = useDashboard()
 <template>
   <UDashboardPage>
     <UDashboardPanel grow>
-      <UDashboardNavbar title="User Rankings">
+      <UDashboardNavbar title="Daily User Rankings">
         <template #right> </template>
       </UDashboardNavbar>
       <UDashboardPanelContent>
         <div class="grid lg:grid-cols-2 lg:items-start gap-8 mt-8">
           <HomeTopProfiles />
           <HomeTopPosts />
+          <HomeLowestProfiles />
+          <HomeLowestPosts />
         </div>
       </UDashboardPanelContent>
     </UDashboardPanel>
