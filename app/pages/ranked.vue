@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { UserProfile } from '~/types'
+import type { APIResponse } from '~/types'
 
 const defaultColumns = [{
   key: 'profileId',
@@ -21,7 +21,7 @@ const defaultColumns = [{
 }]
 
 const q = ref('')
-const selected = ref<UserProfile[]>([])
+const selected = ref<APIResponse[]>([])
 const selectedColumns = ref(defaultColumns)
 const sort = ref({ column: 'id', direction: 'asc' as const })
 const input = ref<{ input: HTMLInputElement }>()
@@ -31,10 +31,10 @@ const columns = computed(() => defaultColumns.filter(column => selectedColumns.v
 
 const query = computed(() => ({ q: q.value, sort: sort.value.column, order: sort.value.direction }))
 
-const { data: users, pending } = await useFetch<UserProfile[]>('/api/twitter', { query, default: () => [] })
+const { data: users, pending } = await useFetch<APIResponse[]>('/api/twitter', { query, default: () => [] })
 
 
-function onSelect(row: UserProfile) {
+function onSelect(row: APIResponse) {
   const index = selected.value.findIndex(item => item.profileId === row.profileId)
   if (index === -1) {
     selected.value.push(row)
@@ -54,7 +54,7 @@ defineShortcuts({
   <UDashboardPage>
     <UDashboardPanel grow>
       <UDashboardNavbar
-        title="User Ranking"
+        title="Ranked User Search"
         :badge="users.length"
       >
         <template #right>

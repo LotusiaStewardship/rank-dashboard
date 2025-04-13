@@ -27,21 +27,22 @@ export type IndexedPostRanking = IndexedRanking & {
 /** */
 // type RankAPIResult = IndexedRanking | IndexedPostRanking
 
-export interface UserProfile {
-  profileId: string
+type APIResponse = {
   platform: string
-  ranking: bigint
-  votesPositive: number
-  votesNegative: number
-}
-
-export interface UserPost {
   profileId: string
-  postId: string
-  platform: string
-  ranking: bigint
-  votesPositive: number
-  votesNegative: number
+  postId?: string
+  total: {
+    ranking: string
+    votesPositive: number
+    votesNegative: number
+  }
+  changed: {
+    ranking: string
+    rate: string
+    votesPositive: number
+    votesNegative: number
+  }
+  votesTimespan: Array<string>
 }
 
 export type Period = 'daily' | 'weekly' | 'monthly'
