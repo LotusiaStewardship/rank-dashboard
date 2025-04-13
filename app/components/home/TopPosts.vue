@@ -31,7 +31,7 @@ function toProfileUrl(profileId: string, postId: string) {
 <template>
   <UDashboardCard
     title="Top Posts"
-    description="Top 5 Posts Right Now!"
+    description="Top 5 Posts with the most positive change in the last day."
     icon="i-heroicons-globe-alt-20-solid"
   >
     <div class="space-y-2">
@@ -45,7 +45,7 @@ function toProfileUrl(profileId: string, postId: string) {
         <div class="text-sm flex-1">
           <div>
             <p class="text-gray-900 dark:text-white font-medium">
-              {{ `${post.profileId} > ${post.postId}` }}
+              {{ `Post by ${post.profileId}` }}
             </p>
             <p class="text-gray-500 dark:text-gray-400">
               {{ post.platform }}

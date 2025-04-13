@@ -32,7 +32,7 @@ function toProfileUrl(profileId: string) {
 <template>
   <UDashboardCard
     title="Daily Top Profiles"
-    description="Top 5 profiles with the most positive change in the last day"
+    description="Top 5 profiles with the most positive change in the last day."
     icon="i-heroicons-chart-bar-20-solid"
   >
     <NuxtLink
