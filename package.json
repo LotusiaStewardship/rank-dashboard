@@ -1,0 +1,37 @@
+{
+  "name": "nuxt-ui-pro-template-dashboard",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "typecheck": "nuxt typecheck"
+  },
+  "dependencies": {
+    "@extractus/oembed-extractor": "^4.0.6",
+    "@iconify-json/heroicons": "^1.2.2",
+    "@iconify-json/simple-icons": "^1.2.27",
+    "@nuxt/fonts": "^0.10.3",
+    "@nuxt/ui-pro": "^1.7.1",
+    "@unovis/ts": "^1.5.1",
+    "@unovis/vue": "^1.5.1",
+    "@vueuse/nuxt": "^12.8.2",
+    "date-fns": "^4.1.0",
+    "nuxt": "^3.16.0",
+    "v-calendar": "^3.1.2"
+  },
+  "devDependencies": {
+    "@nuxt/eslint": "^1.1.0",
+    "eslint": "^9.22.0",
+    "typescript-eslint": "^8.27.0",
+    "vue-tsc": "^2.1.10"
+  },
+  "resolutions": {
+    "vue-tsc": "2.1.10"
+  },
+  "packageManager": "pnpm@10.6.1"
+}
