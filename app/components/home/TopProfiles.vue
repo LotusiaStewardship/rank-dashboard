@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import type { APIResponse } from '~/types'
+import type { StatsAPIResponse } from '~/types'
 import { toMinifiedNumber } from '~~/utils/functions'
 
 const platformType = 'twitter'
 const apiUrl = `https://rank.lotusia.org/api/v1/stats/${platformType}`
 const apiReply = await fetch(`${apiUrl}/profiles/top-ranked`)
-const profiles = (await apiReply.json()) as APIResponse[]
+const profiles = (await apiReply.json()) as StatsAPIResponse[]
 
 function toProfileUrl(profileId: string) {
-  return `https://x.com/${profileId}`
+  return `/profile/${profileId}`
 }
 </script>
 

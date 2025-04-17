@@ -13,21 +13,21 @@ export type RankAPIParams = {
   profileId: string
 }
 /** Profile ranking returned from RANK backend API */
-export type IndexedRanking = RankAPIParams & {
+export type IndexedProfileRanking = RankAPIParams & {
   ranking: string
   votesPositive: number
   votesNegative: number
 }
 /** Post ranking returned from RANK backend API */
-export type IndexedPostRanking = IndexedRanking & {
-  profile: IndexedRanking
+export type IndexedPostRanking = IndexedProfileRanking & {
+  profile: IndexedProfileRanking
   postId: string
   postMeta?: PostMeta
 }
 /** */
 // type RankAPIResult = IndexedRanking | IndexedPostRanking
 
-type APIResponse = {
+export type StatsAPIResponse = {
   platform: string
   profileId: string
   postId?: string
@@ -43,11 +43,4 @@ type APIResponse = {
     votesNegative: number
   }
   votesTimespan: Array<string>
-}
-
-export type Period = 'daily' | 'weekly' | 'monthly'
-
-export interface Range {
-  start: Date
-  end: Date
 }

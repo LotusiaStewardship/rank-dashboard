@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import type { APIResponse } from '~/types'
+import type { StatsAPIResponse } from '~/types'
 import { toMinifiedNumber } from '~~/utils/functions'
 
 const platformType = 'twitter'
 const apiUrl = `https://rank.lotusia.org/api/v1/stats/${platformType}`
 const apiReply = await fetch(`${apiUrl}/posts/top-ranked`)
-const userPosts = (await apiReply.json()) as APIResponse[]
-function toProfileUrl(profileId: string, postId: string) {
+const userPosts = (await apiReply.json()) as StatsAPIResponse[]
+function toPostUrl(profileId: string, postId: string) {
   return `https://x.com/${profileId}/status/${postId}`
 }
 </script>
@@ -21,7 +21,7 @@ function toProfileUrl(profileId: string, postId: string) {
       <NuxtLink
         v-for="(post, index) in userPosts"
         :key="index"
-        :to="toProfileUrl(post.profileId, post.postId)"
+        :to="toPostUrl(post.profileId, post.postId)"
         target="_blank"
         class="px-3 py-2 -mx-2 last:-mb-2 rounded-md hover:bg-gray-50 dark:hover:bg-gray-800/50 cursor-pointer flex items-center gap-3 relative"
       >
