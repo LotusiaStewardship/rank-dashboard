@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ProfilesAPIResponse } from '~/types'
+import type { IndexedProfileRanking } from '~/types'
 import { toMinifiedNumber } from '~~/utils/functions'
 
 const route = useRoute()
@@ -7,11 +7,11 @@ const route = useRoute()
 const platformType = route.params.platform
 const apiUrl = `https://rank.lotusia.org/api/v1/${platformType}`
 
-const profileId = route.params.profileId
+const profileId: string = route.params.profileId.toString()
 
 const profileReply = await fetch(`${apiUrl}/${profileId}`)
 const profile = (await profileReply.json()) as IndexedProfileRanking
-var profileColor = "neutral"
+var profileColor: ChipColor = "gray"
 const ranking = BigInt(profile.ranking)
 if(!profile){
     //profile not found or other error.
@@ -20,11 +20,14 @@ if(!profile){
     profileColor = "green"
   } else if(ranking < 0n) {
     profileColor = "red"
-  } else {
-    profileColor = "neutral"
+  } else if (ranking == 0n){
+    profileColor = "gray"
   }
 }
-
+function toReadableNumber(bigNumber: string){
+  var newNumber: string = toMinifiedNumber(Number(bigNumber))
+  return newNumber
+}
 function toProfileUrl(profileId: string) {
   return `https://x.com/${profileId}`
 }
@@ -42,21 +45,34 @@ function toPostUrl(profileId: string, postId: string) {
       </UDashboardNavbar>
       <br />
       <UContainer>
-        <NuxtLink
-        :to="toProfileUrl(profileId)"
-        target="_blank">
-          <UChip
-          position="top-left"
-          :color="profileColor"
-          size="md" inset>
+        <UDashboardCard
+          :title="profileId"
+          :description="`${toReadableNumber(profile.ranking)} on ${profile.platform}`"
+        >
+          <div class="text-sm flex-1">
+            <UChip 
+            :color="profileColor"
+            position="top-left"
+            standalone 
+            inset>
             <UAvatar
-              src="/spongebob.png"
-              :alt="profile.profileId"
-              size="3xl"
-            />
-          </UChip>
-        </NuxtLink>
-        <hr>
+              size="2xl"
+              src="https://github.com/benjamincanac.png" />
+            </UChip>
+            <div>
+              <p class="text-gray-900 dark:text-white font-medium">
+                <UIcon name="i-lucide-arrow-up" class="size-8" /> {{ profile.votesPositive }} &nbsp;&nbsp;&nbsp;&nbsp;
+                <UIcon name="i-lucide-arrow-down" class="size-8" /> {{ profile.votesNegative }}
+              </p>
+              <p class="text-gray-500 dark:text-gray-400">
+                
+              </p>
+            </div>
+          </div>
+          <p class="text-gray-900 dark:text-white font-medium text-lg">
+            Recent Votes:
+          </p>
+        </UDashboardCard>
       </UContainer>
     </UDashboardPanel>
   </UDashboardPage>

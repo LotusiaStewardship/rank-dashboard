@@ -1,4 +1,4 @@
-import type { Avatar } from '#ui/types'
+import type { Avatar, ChipColor } from '#ui/types'
 
 /** */
 export type PostMeta = {
